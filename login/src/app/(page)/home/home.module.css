@@ -1,0 +1,91 @@
+.container{
+    width: 900px;
+    height: 600px;
+    border-radius: .5rem;
+    background-color: white;
+    box-shadow: 3px 3px 6px 4px #a43ef1;
+    display: flex;
+    align-items: center;
+}
+
+.login{
+    width: 50%;
+    height: 100%;
+    padding: 1rem 1.5rem;
+}
+
+.areaImg{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.img{
+    width: 100px;
+    height: auto;
+    margin: 1rem 0px;
+}
+
+.title{
+    font-size: 1.9rem;
+    font-weight: bold;
+}
+
+.subTitle {
+    font-size: 2.3rem;
+    color: #AB00FF;
+    font-weight: bold;
+}
+
+.form{
+    width: 100%;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.h1{
+    font-size: 1.5rem;
+    margin: .5rem 0px;
+}
+
+.login__form{
+    width: 100%;
+    
+
+}
+
+.input, .inputButton{
+    width: 100%;
+    font-size: 1rem;
+    outline: none;
+    padding: .5rem;
+    margin: .5rem 0px;
+    border-radius: .5rem;
+    border: 1px solid rgb(20, 20, 20);
+}
+
+.inputButton{
+    color: white;
+    cursor: pointer;
+    background-color: #AB00FF;
+    border: 1px solid #AB00FF;
+}
+
+.inputButton:hover{
+    background-color: #aa00ffcc;
+}
+
+.link{
+    margin-top: 1rem;
+    color: black;
+}
+
+.link:hover{
+    color: #aa00ffcc;
+}
