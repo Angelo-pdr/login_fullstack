@@ -2,7 +2,7 @@
 import styles from "./home.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
-import "../../globals.css"
+import "../../globals.css";
 import Link from "next/link";
 
 export default function Home() {
@@ -21,7 +21,6 @@ export default function Home() {
         .string()
         .min(8, "Minimo de 8 caracteres")
         .required("este campo e obrigatorio"),
-
     });
 
   return (
@@ -61,11 +60,24 @@ export default function Home() {
                 className="login-error"
               />
             </div>
-            <input type="submit" value="Log in" className={styles.inputButton} />
-            <Link href="/" className={styles.link} >Don't have an account? Create an account</Link>
+            <input
+              type="submit"
+              value="Log in"
+              className={styles.inputButton}
+            />
+            <Link href="/" className={styles.link}>
+              Don't have an account? Create an account
+            </Link>
           </Form>
         </div>
       </Formik>
+      <div className={styles.slides}>
+        <div className={styles.list}>
+          <img src="/img/img1.png" className={styles.img1} />
+          <img src="/img/img2.png" className={styles.img1} />
+          <img src="/img/img3.png" className={styles.img1} />
+        </div>
+      </div>
     </div>
   );
 }
