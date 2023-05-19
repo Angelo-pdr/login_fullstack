@@ -1,0 +1,100 @@
+.container {
+  width: 400px;
+  height: 550px;
+  border-radius: 0.5rem;
+  background-color: white;
+  box-shadow: 3px 3px 6px 4px #a43ef1;
+  display: flex;
+  align-items: center;
+}
+
+.login {
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem 1rem;
+}
+
+.areaImg {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.img {
+  width: 50px;
+  height: auto;
+  margin: 1rem 0px;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.subTitle {
+  font-size: 1.9rem;
+  color: #ab00ff;
+  font-weight: bold;
+}
+
+.form {
+  width: 100%;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.h1 {
+  font-size: 1.4rem;
+  margin: 0.5rem 0px;
+}
+
+.login__form {
+  width: 100%;
+}
+
+.input,
+.inputButton {
+  width: 100%;
+  font-size: 1rem;
+  outline: none;
+  padding: 0.5rem;
+  margin: 0.5rem 0px;
+  border-radius: 0.5rem;
+  border: 1px solid #737373;
+}
+
+.inputButton {
+  color: white;
+  cursor: pointer;
+  background-color: #ab00ff;
+  border: 1px solid #ab00ff;
+}
+
+.inputButton:hover {
+  background-color: #aa00ffcc;
+}
+
+.link {
+  margin-top: 1rem;
+  color: #737373;
+}
+
+.link:hover {
+  color: #aa00ffcc;
+}
+
+
+@keyframes slide {
+  to {
+    transform: translateX(0%);
+  }
+  from {
+    transform: translateX(-200%);
+  }
+}

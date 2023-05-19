@@ -1,0 +1,121 @@
+.container {
+  width: 900px;
+  height: 600px;
+  border-radius: 0.5rem;
+  background-color: white;
+  box-shadow: 3px 3px 6px 4px #a43ef1;
+  display: flex;
+  align-items: center;
+}
+
+.login {
+  width: 50%;
+  height: 100%;
+  padding: 1rem 1.5rem;
+}
+
+.areaImg {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.imgLoad {
+  width: 100px;
+  height: 99.5px;
+  border-radius: 100%;
+  margin: 1rem 0px;
+  background: linear-gradient(90deg, #e2e2e2, #c0c0c0, #e2e2e2);
+  background-size: 200%;
+  animation: skeleton 1s infinite reverse;
+}
+
+.titleLoad {
+  width: 175.891px;
+  height: 36px;
+
+}
+
+.subTitleLoad {
+  width: 213.266px;
+  height: 45px;
+  margin-top: 0.5rem;
+}
+
+.form {
+  width: 100%;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.h1Load {
+  width: 267.422px;
+  height: 29px;
+  margin: 0.5rem 0px;
+}
+
+.h1Load,
+.titleLoad,
+.subTitleLoad,
+.linkLoad,
+.inputLoad,
+.slideLoad {
+  border-radius: 0.5rem;
+  background: linear-gradient(90deg, #e2e2e2, #c0c0c0, #e2e2e2);
+  background-size: 200%;
+  animation: skeleton 1s infinite reverse;
+}
+
+.login__form {
+  width: 100%;
+}
+
+.inputLoad {
+  width: 402px;
+  height: 36px;
+  margin: 0.5rem 0px;
+  border-radius: 0.5rem;
+}
+
+.linkLoad {
+  margin-top: 1rem;
+  width: 320.25px;
+  height: 20px;
+}
+
+.slides {
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
+  border-radius: 0px 0.3rem 0.3rem 0px;
+}
+
+.list {
+  height: 100%;
+  width: 1000px;
+  display: flex;
+  align-items: center;
+}
+
+.slideLoad {
+  width: 45%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: none;
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}

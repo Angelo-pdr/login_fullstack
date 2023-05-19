@@ -1,18 +1,22 @@
 "use client";
-import styles from "./home.module.css";
+import styles from "./register.module.css";
+import { Suspense } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
-import Link from "next/link";
-import LoadingHome from "./loading";
-import { Suspense } from "react";
 
-export default function Home() {
+import Link from "next/link";
+import LoadingRegister from "./loading";
+
+const Register = () => {
   function handleClickLogin(values) {
     console.log(values);
   }
 
   const validationLogin = () =>
     yup.object().shape({
+      name: yup
+        .string()
+        .required("este campo e obrigatorio"),
       email: yup
         .string()
         .email("Não e uma email")
@@ -25,7 +29,7 @@ export default function Home() {
     });
 
   return (
-    <Suspense fallback={<LoadingHome />}>
+    <Suspense fallback={<LoadingRegister />}>
       <div className={styles.container}>
         <Formik initialValues={{}} onSubmit={handleClickLogin}>
           <div className={styles.login}>
@@ -35,7 +39,20 @@ export default function Home() {
               <h2 className={styles.subTitle}>South Maze</h2>
             </div>
             <Form className={styles.form}>
-              <h1 className={styles.h1}>Log in to your account.</h1>
+              <h1 className={styles.h1}>Sign up and start learning</h1>
+              <div className={styles.login__form}>
+                <Field
+                  name="name"
+                  className={styles.input}
+                  placeHolder="Full Name"
+                />
+
+                <ErrorMessage
+                  componet="span"
+                  name="name"
+                  className="login-error"
+                />
+              </div>
               <div className={styles.login__form}>
                 <Field
                   name="email"
@@ -64,23 +81,18 @@ export default function Home() {
               </div>
               <input
                 type="submit"
-                value="Log in"
+                value="Sign up"
                 className={styles.inputButton}
               />
-              <Link href="/register" className={styles.link}>
-                Don't have an account? Create an account
+              <Link href="/" className={styles.link}>
+                Already have an account? Log in.
               </Link>
             </Form>
           </div>
         </Formik>
-        <div className={styles.slides}>
-          <div className={styles.list}>
-            <img src="/img/img1.png" className={styles.img1} />
-            <img src="/img/img2.png" className={styles.img1} />
-            <img src="/img/img3.png" className={styles.img1} />
-          </div>
-        </div>
       </div>
-      </Suspense>
+    </Suspense>
   );
-}
+};
+
+export default Register;
