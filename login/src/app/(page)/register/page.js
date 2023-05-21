@@ -3,20 +3,25 @@ import styles from "./register.module.css";
 import { Suspense } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
+import Axios from "axios";
 
 import Link from "next/link";
 import LoadingRegister from "./loading";
 
 const Register = () => {
-  function handleClickLogin(values) {
-    console.log(values);
+  async function handleClickRegister(values) {
+    Axios.post("http://localhost:3001/api/user", {
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    }).then((response) => {
+      console.log(response);
+    });
   }
 
   const validationLogin = () =>
     yup.object().shape({
-      name: yup
-        .string()
-        .required("este campo e obrigatorio"),
+      name: yup.string().required("este campo e obrigatorio"),
       email: yup
         .string()
         .email("Não e uma email")
@@ -31,7 +36,11 @@ const Register = () => {
   return (
     <Suspense fallback={<LoadingRegister />}>
       <div className={styles.container}>
-        <Formik initialValues={{}} onSubmit={handleClickLogin}>
+        <Formik
+          initialValues={{}}
+          onSubmit={handleClickRegister}
+          validateOnChange={validationLogin}
+        >
           <div className={styles.login}>
             <div className={styles.areaImg}>
               <img src="/img/logo.png" className={styles.img} />
@@ -43,8 +52,8 @@ const Register = () => {
               <div className={styles.login__form}>
                 <Field
                   name="name"
-                  className={styles.input}
                   placeHolder="Full Name"
+                  className={styles.input}
                 />
 
                 <ErrorMessage
@@ -56,8 +65,8 @@ const Register = () => {
               <div className={styles.login__form}>
                 <Field
                   name="email"
-                  className={styles.input}
                   placeHolder="Email"
+                  className={styles.input}
                 />
 
                 <ErrorMessage
@@ -69,8 +78,8 @@ const Register = () => {
               <div className={styles.login__form}>
                 <Field
                   name="password"
-                  className={styles.input}
                   placeHolder="Password"
+                  className={styles.input}
                 />
 
                 <ErrorMessage

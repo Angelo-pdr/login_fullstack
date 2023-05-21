@@ -5,10 +5,17 @@ import * as yup from "yup";
 import Link from "next/link";
 import LoadingHome from "./loading";
 import { Suspense } from "react";
+import Axios from "axios";
 
 export default function Home() {
   function handleClickLogin(values) {
-    console.log(values);
+    Axios.post("http://localhost:3001/api/login", {
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    }).then((response) => {
+      console.log(response);
+    });
   }
 
   const validationLogin = () =>
@@ -27,7 +34,11 @@ export default function Home() {
   return (
     <Suspense fallback={<LoadingHome />}>
       <div className={styles.container}>
-        <Formik initialValues={{}} onSubmit={handleClickLogin}>
+        <Formik
+          initialValues={{}}
+          onSubmit={handleClickLogin}
+          validateOnChange={validationLogin}
+        >
           <div className={styles.login}>
             <div className={styles.areaImg}>
               <img src="/img/logo.png" className={styles.img} />
@@ -81,6 +92,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      </Suspense>
+    </Suspense>
   );
 }
