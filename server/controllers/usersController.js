@@ -54,11 +54,11 @@ module.exports = {
             if (result) {
               res.send(results);
             } else {
-              res.send({ msg: "Senha incorreta" });
+              res.send("Senha incorreta");
             }
           });
         } else {
-          res.send({ msg: "Conta nao encontrada" });
+          res.send("Conta nao encontrada");
         }
       }
     );

@@ -1,27 +1,39 @@
 "use client";
-import styles from "./register.module.css";
-import { Suspense } from "react";
+import styles from "./home.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
+import Link from "next/link";
+import LoadingHome from "../../../loading";
+import { Suspense, useState } from "react";
+import {setCookie} from "nookies"
 import Axios from "axios";
 
-import Link from "next/link";
-import LoadingRegister from "./loading";
+export default function Login() {
+  const [usuario, setUsuario] = useState();
 
-const Register = () => {
-   function handleClickRegister(values) {
-    Axios.post("http://localhost:3001/api/user", {
+  function handleClickLogin(values) {
+    Axios.post("http://localhost:3001/api/login", {
       name: values.name,
       email: values.email,
       password: values.password,
     }).then((response) => {
-      console.log(response);
+      validationUser(response.data);
     });
   }
 
-  const validationRegister = () =>
+  function validationUser(use) {
+    if (typeof use == "string") {
+      alert(use);
+    } else {
+      setCookie( null, "usuario", JSON.stringify(use),{
+        maxAge: 86400,
+        path: "/"
+      } )
+    }
+  }
+
+  const validationLogin = () =>
     yup.object().shape({
-      name: yup.string().required("este campo e obrigatorio"),
       email: yup
         .string()
         .email("Não e uma email")
@@ -34,12 +46,12 @@ const Register = () => {
     });
 
   return (
-    <Suspense fallback={<LoadingRegister />}>
+    <Suspense fallback={<LoadingHome />}>
       <div className={styles.container}>
         <Formik
           initialValues={{}}
-          onSubmit={handleClickRegister}
-          validateOnChange={validationRegister}
+          onSubmit={handleClickLogin}
+          validateOnChange={validationLogin}
         >
           <div className={styles.login}>
             <div className={styles.areaImg}>
@@ -48,25 +60,12 @@ const Register = () => {
               <h2 className={styles.subTitle}>South Maze</h2>
             </div>
             <Form className={styles.form}>
-              <h1 className={styles.h1}>Sign up and start learning</h1>
-              <div className={styles.login__form}>
-                <Field
-                  name="name"
-                  placeholder="Full Name"
-                  className={styles.input}
-                />
-
-                <ErrorMessage
-                  componet="span"
-                  name="name"
-                  className="login-error"
-                />
-              </div>
+              <h1 className={styles.h1}>Log in to your account.</h1>
               <div className={styles.login__form}>
                 <Field
                   name="email"
-                  placeholder="Email"
                   className={styles.input}
+                  placeholder="Email"
                 />
 
                 <ErrorMessage
@@ -78,8 +77,8 @@ const Register = () => {
               <div className={styles.login__form}>
                 <Field
                   name="password"
-                  placeholder="Password"
                   className={styles.input}
+                  placeholder="Password"
                 />
 
                 <ErrorMessage
@@ -90,18 +89,23 @@ const Register = () => {
               </div>
               <input
                 type="submit"
-                value="Sign up"
+                value="Log in"
                 className={styles.inputButton}
               />
-              <Link href="/" className={styles.link}>
-                Already have an account? Log in.
+              <Link href="/register" className={styles.link}>
+                Don't have an account? Create an account
               </Link>
             </Form>
           </div>
         </Formik>
+        <div className={styles.slides}>
+          <div className={styles.list}>
+            <img src="/img/img1.png" className={styles.img1} />
+            <img src="/img/img2.png" className={styles.img1} />
+            <img src="/img/img3.png" className={styles.img1} />
+          </div>
+        </div>
       </div>
     </Suspense>
   );
-};
-
-export default Register;
+}

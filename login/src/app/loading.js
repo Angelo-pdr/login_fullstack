@@ -1,4 +1,3 @@
-import "../../globals.css";
 import styles from "./loading.module.css";
 
 export default function LoadingHome() {
